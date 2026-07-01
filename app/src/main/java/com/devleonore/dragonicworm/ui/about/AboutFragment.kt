@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.devleonore.dragonicworm.R
 import com.devleonore.dragonicworm.databinding.FragmentAboutBinding
+import com.devleonore.dragonicworm.databinding.ItemAboutRowBinding
 
 class AboutFragment : Fragment() {
 
@@ -23,11 +22,13 @@ class AboutFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fillAboutRow(binding.aboutDev, "DEVELOPER", "Dev Leonore")
-        fillAboutRow(binding.aboutProject, "PROJECT", "DRAGONIC WORM BUILDER")
-        fillAboutRow(binding.aboutVersion, "VERSION", "2.0.0")
-        fillAboutRow(binding.aboutBuild, "BUILD", "2026.06")
-        fillAboutRow(binding.aboutLicense, "LICENSE", "MIT")
+
+        // <include> with android:id generates typed binding, not View
+        fillAboutRow(binding.aboutDev,     "DEVELOPER", "Dev Leonore")
+        fillAboutRow(binding.aboutProject, "PROJECT",   "DRAGONIC WORM BUILDER")
+        fillAboutRow(binding.aboutVersion, "VERSION",   "2.0.0")
+        fillAboutRow(binding.aboutBuild,   "BUILD",     "2026.06")
+        fillAboutRow(binding.aboutLicense, "LICENSE",   "MIT")
 
         binding.txtTechList.text = listOf(
             "Kotlin", "Android SDK 29+", "ViewBinding",
@@ -40,9 +41,9 @@ class AboutFragment : Fragment() {
         ).joinToString("\n")
     }
 
-    private fun fillAboutRow(rowView: View, label: String, value: String) {
-        rowView.findViewById<TextView>(R.id.aboutRowLabel).text = label
-        rowView.findViewById<TextView>(R.id.aboutRowValue).text = value
+    private fun fillAboutRow(rowBinding: ItemAboutRowBinding, label: String, value: String) {
+        rowBinding.aboutRowLabel.text = label
+        rowBinding.aboutRowValue.text = value
     }
 
     override fun onDestroyView() {
