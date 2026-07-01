@@ -22,19 +22,20 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: '8.7'
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      - name: Install Gradle 8.7
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-8.7-bin.zip -O /tmp/gradle.zip
+          unzip -q /tmp/gradle.zip -d /opt
+          export PATH=/opt/gradle-8.7/bin:$PATH
+          echo "GRADLE_HOME=/opt/gradle-8.7" >> $GITHUB_ENV
+          echo "/opt/gradle-8.7/bin" >> $GITHUB_PATH
+          gradle --version
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug --stacktrace
+        run: gradle assembleDebug --stacktrace --no-daemon
 
       - name: Build Release APK (unsigned)
-        run: ./gradlew assembleRelease --stacktrace
+        run: gradle assembleRelease --stacktrace --no-daemon
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
@@ -53,7 +54,7 @@ jobs:
       - name: Show build result
         run: |
           echo "==============================="
-          echo " DRAGONIC WORM BUILDER - Built!"
+          echo " DRAGONIC WORM BUILDER - Done!"
           echo " Developed by Dev Leonore"
           echo "==============================="
           ls -lh app/build/outputs/apk/debug/*.apk 2>/dev/null || true
