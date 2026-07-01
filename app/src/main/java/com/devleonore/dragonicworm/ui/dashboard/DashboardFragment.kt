@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -29,27 +30,22 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val app = requireActivity().application as DragonicApp
 
-        // Stats
-        binding.statTemplates.root.findViewById<TextView>(R.id.statNumber).text =
-            TemplateType.entries.size.toString()
-        binding.statTemplates.root.findViewById<TextView>(R.id.statLabel).text = "Templates"
-
-        binding.statGenerated.root.findViewById<TextView>(R.id.statNumber).text =
-            app.totalGenerated.toString()
-        binding.statGenerated.root.findViewById<TextView>(R.id.statLabel).text = "Generated"
-
-        binding.statLanguages.root.findViewById<TextView>(R.id.statNumber).text = "2"
-        binding.statLanguages.root.findViewById<TextView>(R.id.statLabel).text = "Languages"
+        // Stats — <include> generates ItemStatCardBinding, access via typed binding
+        binding.statTemplates.statNumber.text = TemplateType.entries.size.toString()
+        binding.statTemplates.statLabel.text  = "Templates"
+        binding.statGenerated.statNumber.text = app.totalGenerated.toString()
+        binding.statGenerated.statLabel.text  = "Generated"
+        binding.statLanguages.statNumber.text = "2"
+        binding.statLanguages.statLabel.text  = "Languages"
 
         // Quick actions
         val actions = listOf(
-            QuickAction("✦", "New Project", "Start from template", "create"),
-            QuickAction("◈", "Templates", "Browse all templates", "templates"),
-            QuickAction("◉", "Preview", "Preview output files", "preview"),
-            QuickAction("⬇", "Export", "Download ZIP archive", "export")
+            QuickAction("✦", "New Project",  "Start from template",   "create"),
+            QuickAction("◈", "Templates",    "Browse all templates",  "templates"),
+            QuickAction("◉", "Preview",      "Preview output files",  "preview"),
+            QuickAction("⬇", "Export",       "Download ZIP archive",  "export")
         )
         binding.rvQuickActions.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvQuickActions.adapter = QuickActionAdapter(actions) { action ->
@@ -67,15 +63,14 @@ class DashboardFragment : Fragment() {
         // Recent
         if (app.recentProjects.isEmpty()) {
             binding.txtNoRecent.visibility = View.VISIBLE
-            binding.rvRecent.visibility = View.GONE
+            binding.rvRecent.visibility    = View.GONE
         } else {
             binding.txtNoRecent.visibility = View.GONE
-            binding.rvRecent.visibility = View.VISIBLE
+            binding.rvRecent.visibility    = View.VISIBLE
             binding.rvRecent.layoutManager = LinearLayoutManager(requireContext())
-            binding.rvRecent.adapter = RecentProjectAdapter(app.recentProjects.take(5))
+            binding.rvRecent.adapter       = RecentProjectAdapter(app.recentProjects.take(5))
         }
 
-        // System info grid
         populateSystemInfo()
     }
 
@@ -83,34 +78,35 @@ class DashboardFragment : Fragment() {
         val grid = binding.gridSystemInfo
         grid.columnCount = 2
         val info = listOf(
-            "ENGINE" to "Template v2.0",
-            "AI" to "None (Offline)",
-            "DATABASE" to "None",
-            "CLOUD" to "None",
+            "ENGINE"    to "Template v2.0",
+            "AI"        to "None (Offline)",
+            "DATABASE"  to "None",
+            "CLOUD"     to "None",
             "DEVELOPER" to "Dev Leonore",
-            "BUILD" to "2026.06"
+            "BUILD"     to "2026.06"
         )
         val ctx = requireContext()
         for ((key, value) in info) {
-            val container = android.widget.LinearLayout(ctx).apply {
-                orientation = android.widget.LinearLayout.VERTICAL
-                val lp = GridLayout.LayoutParams()
-                lp.width = 0
-                lp.height = GridLayout.LayoutParams.WRAP_CONTENT
-                lp.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
-                lp.setMargins(0, 0, 16, 16)
+            val container = LinearLayout(ctx).apply {
+                orientation = LinearLayout.VERTICAL
+                val lp = GridLayout.LayoutParams().also {
+                    it.width      = 0
+                    it.height     = GridLayout.LayoutParams.WRAP_CONTENT
+                    it.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
+                    it.setMargins(0, 0, 16, 16)
+                }
                 layoutParams = lp
             }
             val keyView = TextView(ctx).apply {
-                text = key
+                text      = key
                 setTextColor(resources.getColor(R.color.neon_red_dark, null))
-                textSize = 9f
+                textSize  = 9f
                 letterSpacing = 0.15f
             }
             val valView = TextView(ctx).apply {
-                text = value
+                text      = value
                 setTextColor(resources.getColor(R.color.text_primary, null))
-                textSize = 11f
+                textSize  = 11f
                 setPadding(0, 4, 0, 0)
             }
             container.addView(keyView)
