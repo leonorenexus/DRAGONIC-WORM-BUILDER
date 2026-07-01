@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="void_black">#FF050505</color>
+    <color name="carbon">#FF111111</color>
+    <color name="slate">#FF1A1A1A</color>
+    <color name="panel">#FF141414</color>
+    <color name="panel_glass">#990F0000</color>
+    <color name="sidebar_bg">#FF0A0000</color>
+    <color name="card_bg">#FF0C0000</color>
+    <color name="code_bg">#FF080000</color>
+
+    <color name="border">#FF2A0A0A</color>
+    <color name="border2">#FF3A1010</color>
+
+    <color name="neon_red">#FFFF0033</color>
+    <color name="neon_red_dim">#FFCC0022</color>
+    <color name="neon_red_dark">#FF880011</color>
+    <color name="neon_red_glow">#26FF0033</color>
+
+    <color name="ghost_gray">#FF888888</color>
+    <color name="text_primary">#FFE0E0E0</color>
+    <color name="text_secondary">#FF999999</color>
+    <color name="text_dim">#FF666666</color>
+
+    <color name="success_green">#FF00FF88</color>
+    <color name="info_blue">#FF0088FF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="transparent">#00000000</color>
+</resources>
