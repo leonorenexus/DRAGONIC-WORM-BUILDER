@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_code_block"
+    android:orientation="vertical"
+    android:layout_marginBottom="6dp"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/aboutRowLabel"
+        style="@style/Text.Mono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:letterSpacing="0.15"
+        android:textColor="@color/neon_red_dark"
+        android:textSize="8sp"
+        android:text="LABEL" />
+
+    <TextView
+        android:id="@+id/aboutRowValue"
+        style="@style/Text.Mono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/text_primary"
+        android:textSize="11sp"
+        android:text="Value" />
+
+</LinearLayout>

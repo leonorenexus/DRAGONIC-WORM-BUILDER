@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/void_black">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Toggles Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_glass"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                style="@style/Text.CardTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Application Settings" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Auto README" android:textColor="@color/text_primary" android:textSize="13sp" android:fontFamily="sans-serif-medium"/>
+                    <TextView style="@style/Text.Mono" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Always include README.md" android:textColor="@color/ghost_gray" android:textSize="10sp" android:layout_marginTop="2dp"/>
+                </LinearLayout>
+                <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switchAutoReadme" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" app:thumbTint="@color/neon_red" app:trackTint="@color/border2"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/border"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Include install.sh" android:textColor="@color/text_primary" android:textSize="13sp" android:fontFamily="sans-serif-medium"/>
+                    <TextView style="@style/Text.Mono" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Add installation script to ZIP" android:textColor="@color/ghost_gray" android:textSize="10sp" android:layout_marginTop="2dp"/>
+                </LinearLayout>
+                <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switchIncludeInstall" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" app:thumbTint="@color/neon_red" app:trackTint="@color/border2"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/border"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Include run.sh" android:textColor="@color/text_primary" android:textSize="13sp" android:fontFamily="sans-serif-medium"/>
+                    <TextView style="@style/Text.Mono" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Add run script to ZIP" android:textColor="@color/ghost_gray" android:textSize="10sp" android:layout_marginTop="2dp"/>
+                </LinearLayout>
+                <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switchIncludeRun" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" app:thumbTint="@color/neon_red" app:trackTint="@color/border2"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Default Author Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_card_glass"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                style="@style/Text.CardTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Defaults" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Input.Field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Default Author Name">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputDefaultAuthor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="Dev Leonore"
+                    android:textColor="@color/text_primary"
+                    android:textSize="13sp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <!-- Reset Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_card_glass"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                style="@style/Text.CardTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Reset" />
+
+            <TextView
+                style="@style/Text.Mono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Reset all project configuration to defaults."
+                android:textColor="@color/ghost_gray"
+                android:textSize="11sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnReset"
+                style="@style/Button.Ghost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⟳ Reset Config" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
