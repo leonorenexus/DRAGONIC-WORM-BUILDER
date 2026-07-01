@@ -27,43 +27,29 @@
         <item name="colorSurface">@color/card_bg</item>
         <item name="colorOnSurface">@color/text_primary</item>
         <item name="colorPrimary">@color/neon_red</item>
-        <item name="android:windowTitleStyle">@style/DialogTitleStyle</item>
     </style>
 
-    <style name="DialogTitleStyle" parent="android:TextAppearance.Material">
-        <item name="android:textColor">@color/neon_red</item>
-        <item name="android:fontFamily">sans-serif-black</item>
-    </style>
-
-    <!-- Text Styles -->
-    <style name="Text.Display" parent="android:Widget.TextView">
+    <!-- Text Styles - use Widget.AppCompat.TextView as valid parent -->
+    <style name="Text.Display" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">sans-serif-black</item>
         <item name="android:textColor">@color/neon_red</item>
         <item name="android:letterSpacing">0.08</item>
     </style>
 
-    <style name="Text.Mono" parent="android:Widget.TextView">
+    <style name="Text.Mono" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">monospace</item>
         <item name="android:textColor">@color/text_secondary</item>
     </style>
 
-    <style name="Text.Body" parent="android:Widget.TextView">
+    <style name="Text.Body" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/text_primary</item>
     </style>
 
-    <!-- Card -->
-    <style name="Card.Glass">
-        <item name="android:background">@drawable/bg_card_glass</item>
-        <item name="android:padding">16dp</item>
-    </style>
-
-    <!-- Section title -->
     <style name="Text.CardTitle" parent="Text.Display">
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">0.15</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:drawablePadding">8dp</item>
     </style>
 
     <!-- Buttons -->
